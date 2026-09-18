@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script>
+      // Safeguard for environments (sandboxed iframes, preview tools) where window.fetch is a getter-only property
+      (function() {
+        try {
+          var nativeFetch = null;
+          try {
+            if (typeof window !== 'undefined' && window.fetch) {
+              nativeFetch = window.fetch.bind(window);
+            }
+          } catch (_) {}
+
+          var currentFetch = nativeFetch;
+          var fetchAccessor = {
+            get: function() {
+              return currentFetch;
+            },
+            set: function(newFetch) {
+              currentFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true
+          };
+
+          // 1. Define on Window.prototype (where getter-only attribute originates in WebIDL)
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              Object.defineProperty(Window.prototype, 'fetch', fetchAccessor);
+            }
+          } catch (_) {}
+
+          // 2. Define on window instance
+          try {
+            if (typeof window !== 'undefined') {
+              Object.defineProperty(window, 'fetch', fetchAccessor);
+            }
+          } catch (_) {}
+
+          // 3. Define on globalThis
+          try {
+            if (typeof globalThis !== 'undefined') {
+              Object.defineProperty(globalThis, 'fetch', fetchAccessor);
+            }
+          } catch (_) {}
+        } catch (_) {}
+      })();
+    </script>
+    <script>
+      // Applique le thème (sombre par défaut / clair blanc) avant le rendu pour éviter le flash
+      try {
+        var storedTheme = localStorage.getItem('fln-theme');
+        if (storedTheme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (_) {}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="./assets/fln-bologhine-logo.svg" />
+    <title>منصة المترشح لانتخابات المجالس الشعبية البلدية والولائية 2026 لبلدية بولوغين</title>
+    <meta name="description" content="منصة المترشح لانتخابات المجالس الشعبية البلدية والولائية 2026 لبلدية بولوغين - حزب جبهة التحرير الوطني FLN، قسمة بولوغين ومحافظة باب الوادي." />
+    <meta property="og:title" content="منصة المترشح لانتخابات المجالس الشعبية البلدية والولائية 2026 لبلدية بولوغين" />
+    <meta property="og:description" content="منصة المترشح لانتخابات المجالس الشعبية البلدية والولائية 2026 لبلدية بولوغين - حزب جبهة التحرير الوطني FLN، قسمة بولوغين ومحافظة باب الوادي." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-700 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

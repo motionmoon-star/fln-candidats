@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design 2 — Moderne Sombre Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1017;
+    --bg2:#0e1723;
+    --panel:#111c2a;
+    --panel2:#152232;
+    --line:rgba(148,163,184,.14);
+    --acc:#10b981;
+    --acc-soft:#34d399;
+    --acc-dim:rgba(16,185,129,.14);
+    --txt:#e7eef4;
+    --mut:#8ea3b8;
+    --amber:#fbbf24;
+    --rose:#fb7185;
+    --indigo:#6366f1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:
+      radial-gradient(900px 460px at 85% -10%, rgba(16,185,129,.12), transparent 55%),
+      radial-gradient(700px 420px at -5% 25%, rgba(99,102,241,.10), transparent 55%),
+      var(--bg);
+    color:var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh;
+  }
+  .cairo{font-family:'Cairo',sans-serif}
+
+  /* ---------- Previews bar ---------- */
+  .bar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,16,23,.82);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:14px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  }
+  .bar h2{font-size:18px;font-weight:800;letter-spacing:.2px}
+  .bar .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);border:1px solid rgba(16,185,129,.5);padding:3px 10px;border-radius:99px}
+  .bar .desc{font-size:12.5px;color:var(--mut);max-width:560px;line-height:1.5}
+  .bar .links{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .bar a{color:#0a1017;background:#e7eef4;text-decoration:none;font-size:12px;font-weight:700;padding:7px 14px;border-radius:99px}
+  .bar a.here{background:var(--acc);}
+
+  .screen-label{width:100%;max-width:1180px;margin:44px auto 14px;padding:0 24px;display:flex;align-items:center;gap:14px}
+  .screen-label .n{font-size:13px;font-weight:800;color:var(--acc);font-family:ui-monospace,monospace}
+  .screen-label h3{font-size:15px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+  .screen-label .rule{flex:1;height:1px;background:var(--line)}
+
+  /* ---------- Login (Moderne Sombre) ---------- */
+  .login{
+    max-width:1180px;margin:0 auto;border-radius:24px;overflow:hidden;min-height:540px;
+    display:grid;grid-template-columns:1fr 1fr;
+    background:linear-gradient(150deg,var(--bg2),var(--panel) 55%,#0c1622);
+    border:1px solid var(--line);
+    box-shadow:0 40px 120px -40px rgba(0,0,0,.85);
+    position:relative;
+  }
+  .login::before{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(120deg, transparent 0 30%, rgba(16,185,129,.05) 45%, transparent 60%),
+      radial-gradient(500px 300px at 20% 85%, rgba(16,185,129,.10), transparent 60%);
+    pointer-events:none;
+  }
+  .lhalf{position:relative;padding:70px 60px;display:flex;flex-direction:column;justify-content:space-between;z-index:1}
+  .lhalf .brand{display:flex;align-items:center;gap:14px}
+  .lhalf .logomark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--acc),#059669);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#062b1e;box-shadow:0 12px 30px -8px rgba(16,185,129,.6)}
+  .lhalf .logotype b{display:block;font-size:14.5px;letter-spacing:.3px}
+  .lhalf .logotype small{color:var(--mut);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+  .lhalf h1{font-size:clamp(30px,3.4vw,44px);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-top:40px}
+  .lhalf h1 .hl{background:linear-gradient(90deg,var(--acc-soft),#6ee7b7);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lhalf p{color:var(--mut);font-size:15px;line-height:1.7;max-width:44ch}
+  .stats{display:flex;gap:22px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+  .stats .s b{display:block;font-size:22px;font-weight:800}
+  .stats .s small{color:var(--mut);font-size:11.5px;letter-spacing:1px;text-transform:uppercase}
+  .rhalf{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;padding:48px}
+  .glass{
+    width:100%;max-width:400px;border-radius:22px;padding:30px 30px 26px;
+    background:rgba(255,255,255,.045);
+    border:1px solid var(--line);
+    backdrop-filter:blur(18px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 30px 70px -30px rgba(0,0,0,.8);
+  }
+  .glass h3{font-size:20px;font-weight:800;letter-spacing:-.4px}
+  .glass .sub{color:var(--mut);font-size:13px;margin-top:4px}
+  .seg{display:grid;grid-template-columns:1fr 1fr;background:rgba(148,163,184,.08);padding:4px;border-radius:12px;margin-top:20px}
+  .seg button{border:none;background:transparent;color:var(--mut);font-weight:700;font-size:13px;padding:9px;border-radius:9px;cursor:pointer;font-family:inherit}
+  .seg button.on{background:var(--acc);color:#052e20;box-shadow:0 6px 18px -6px rgba(16,185,129,.7)}
+  .gfield{margin-top:14px}
+  .gfield label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:6px}
+  .gfield input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(8,14,22,.6);color:var(--txt);font-size:14px;font-family:inherit;transition:.2s}
+  .gfield input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-dim)}
+  .gbtn{width:100%;margin-top:20px;padding:14px;border:none;border-radius:12px;cursor:pointer;font-weight:800;font-size:14px;font-family:inherit;
+    background:linear-gradient(90deg,var(--acc),#059669);color:#052e20;box-shadow:0 14px 34px -10px rgba(16,185,129,.65);transition:.2s}
+  .gbtn:hover{transform:translateY(-1px);box-shadow:0 18px 40px -10px rgba(16,185,129,.75)}
+  .gfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;color:var(--mut);font-size:12px}
+  .gfoot .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* ---------- Dashboard (Moderne Sombre) ---------- */
+  .dash{max-width:1180px;margin:0 auto 70px;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);box-shadow:0 40px 120px -50px rgba(0,0,0,.9)}
+  .dh{position:relative;display:flex;align-items:center;gap:16px;padding:16px 26px;border-bottom:1px solid var(--line);background:rgba(15,26,40,.7);backdrop-filter:blur(12px)}
+  .dh .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:14px}
+  .dh .brand .logomark{width:32px;height:32px;border-radius:10px;font-size:11px}
+  .dh .brand small{display:block;color:var(--mut);font-weight:600;font-size:10.5px;letter-spacing:1px;text-transform:uppercase}
+  .dh .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:rgba(148,163,184,.07);font-size:12.5px;font-weight:600;color:var(--txt)}
+  .chip i{width:8px;height:8px;border-radius:50%}
+  .chip i.g{background:var(--acc);box-shadow:0 0 10px var(--acc)}
+  .chip i.r{background:var(--rose);box-shadow:0 0 10px var(--rose)}
+  .ghost{padding:8px 13px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--mut);font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+  .gdash{padding:26px;display:grid;gap:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tile{border-radius:18px;padding:20px;background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);position:relative;overflow:hidden}
+  .tile::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:var(--acc-dim);filter:blur(20px)}
+  .tile .row{display:flex;align-items:center;justify-content:space-between}
+  .tile .lbl{font-size:12px;font-weight:600;color:var(--mut);letter-spacing:.4px}
+  .tile .ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;background:var(--acc-dim);color:var(--acc)}
+  .tile .val{font-size:32px;font-weight:800;letter-spacing:-1.2px;margin-top:14px;line-height:1}
+  .tile .val i{font-style:normal;font-size:14px;color:var(--mut);font-weight:600}
+  .tile .track{height:6px;border-radius:99px;background:rgba(148,163,184,.14);margin-top:16px;overflow:hidden}
+  .tile .track b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--acc),var(--acc-soft));box-shadow:0 0 14px rgba(16,185,129,.5)}
+  .tile .meta{display:flex;justify-content:space-between;margin-top:10px;color:var(--mut);font-size:11.5px}
+  .duo{display:grid;grid-template-columns:1.3fr .7fr;gap:14px}
+  .card{border-radius:18px;padding:22px;background:var(--panel);border:1px solid var(--line)}
+  .card h4{font-size:14.5px;font-weight:800;letter-spacing:.2px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .card h4 .l{width:9px;height:9px;border-radius:3px;background:linear-gradient(135deg,var(--acc),var(--acc-soft));box-shadow:0 0 12px rgba(16,185,129,.7)}
+  .hbar{display:flex;align-items:flex-end;gap:14px;height:210px}
+  .hbar .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .hbar .t{width:100%;height:196px;display:flex;align-items:flex-end;position:relative}
+  .hbar .t::before{content:"";position:absolute;left:0;right:0;top:98%;height:1px;background:var(--line)}
+  .hbar .t i{width:74%;border-radius:9px 9px 3px 3px;background:linear-gradient(180deg,rgba(16,185,129,.9),rgba(16,185,129,.25));box-shadow:0 0 24px -4px rgba(16,185,129,.6)}
+  .hbar .c b{font-size:11px;color:var(--mut)}
+  .alerts{display:flex;flex-direction:column;gap:10px}
+  .alerts .a{display:flex;gap:11px;align-items:flex-start;padding:12px;border-radius:13px;border:1px solid var(--line);background:rgba(148,163,184,.05);font-size:12.5px;line-height:1.5}
+  .alerts .a .ic{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+  .alerts .a.w .ic{background:rgba(251,191,36,.15);color:var(--amber)}
+  .alerts .a.g .ic{background:var(--acc-dim);color:var(--acc)}
+  .alerts .a b{display:block;font-size:12.5px}
+  .alerts .a span{color:var(--mut)}
+  table{width:100%;border-collapse:collapse}
+  table th{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mut);text-align:left;padding:10px;border-bottom:1px solid var(--line)}
+  table td{padding:13px 10px;font-size:13.5px;border-bottom:1px solid rgba(148,163,184,.08)}
+  table tr:hover td{background:rgba(16,185,129,.04)}
+  .rank{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:10px;font-weight:800;font-size:13px;background:rgba(148,163,184,.1);color:var(--txt);font-family:ui-monospace,monospace}
+  .rank.one{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#3a2403;box-shadow:0 8px 20px -6px rgba(251,191,36,.6)}
+  .name b{display:block;font-size:13.5px}
+  .name small{color:var(--mut);font-size:11.5px}
+  .dots{display:flex;gap:4px}
+  .dots i{width:11px;height:11px;border-radius:4px}
+  .dots i.g{background:var(--acc)}.dots i.a{background:var(--amber)}.dots i.r{background:var(--rose)}
+  .pill{font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px}
+  .pill.g{background:var(--acc-dim);color:var(--acc-soft);border:1px solid rgba(16,185,129,.4)}
+  .pill.a{background:rgba(251,191,36,.13);color:var(--amber);border:1px solid rgba(251,191,36,.35)}
+</style>
+</head>
+<body>
+
+  <div class="bar">
+    <span class="tag">Aperçu 2 / 3</span>
+    <h2>Moderne Sombre Premium</h2>
+    <span class="desc">Dashboard exécutif style SaaS : fond sombre profond, carte en verre dépoli, accents vert émeraude lumineux, typographie dense et moderne.</span>
+    <div class="links">
+      <a href="design-1-institutionnel.html">Design 1</a>
+      <a href="design-3-clair-professionnel.html">Design 3</a>
+    </div>
+  </div>
+
+  <!-- LOGIN PREVIEW -->
+  <div class="screen-label"><span class="n">01</span><h3>Écran de connexion</h3><div class="rule"></div></div>
+  <section class="login">
+    <div class="lhalf">
+      <div class="brand">
+        <div class="logomark">FLN</div>
+        <div class="logotype"><b>Kasma Bologhine</b><small>Mouhafadha de Bab El Oued</small></div>
+      </div>
+      <div>
+        <h1>Commandez la saison<br>électorale <span class="hl">2026</span>.</h1>
+        <p style="margin-top:14px">Plateforme de gestion et d'audit des dossiers de candidature APC &amp; APW. Conformité des 11 pièces, quotas légaux et consolidation des listes en temps réel.</p>
+        <div class="stats">
+          <div class="s"><b>11</b><small>Pièces / dossier</small></div>
+          <div class="s"><b>30%</b><small>Quota femmes</small></div>
+          <div class="s"><b>23</b><small>Sièges APC</small></div>
+        </div>
+      </div>
+      <div class="gfoot"><span class="dot"></span>Canaux sécurisés · chiffrés de bout en bout</div>
+    </div>
+    <div class="rhalf">
+      <div class="glass">
+        <h3>Espace d'administration</h3>
+        <div class="sub cairo" style="text-align:right">قسمة بولوغين — لجنة التراشيحات</div>
+        <div class="seg">
+          <button class="on">Admin</button><button>Espace candidat</button>
+        </div>
+        <div class="gfield"><label>Identifiant</label><input value="admin.kasma" /></div>
+        <div class="gfield"><label>Mot de passe</label><input type="password" value="hasbaloui" /></div>
+        <button class="gbtn">Accéder au tableau de bord →</button>
+        <div class="gfoot"><span>Session sécurisée</span><span class="dot"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <div class="screen-label"><span class="n">02</span><h3>Tableau de bord — Analytique &amp; Suivi</h3><div class="rule"></div></div>
+  <section class="dash">
+    <header class="dh">
+      <div class="brand"><div class="logomark">FLN</div><div>Kasma Bologhine<small>Élections locales · 2026</small></div></div>
+      <div class="right">
+        <span class="chip"><i class="g"></i>Session admin active</span>
+        <span class="chip"><i class="r"></i>3 à régulariser</span>
+        <button class="ghost">+ Candidat</button>
+      </div>
+    </header>
+    <div class="gdash">
+      <div class="grid4">
+        <div class="tile"><div class="row"><span class="lbl">Dossiers 100%</span><span class="ico">✓</span></div><div class="val">3 <i>/ 3</i></div><div class="track"><b style="width:100%"></b></div><div class="meta"><span>2 APC</span><span>1 APW</span></div></div>
+        <div class="tile"><div class="row"><span class="lbl">Parité féminine</span><span class="ico">♀</span></div><div class="val">33%</div><div class="track"><b style="width:33%"></b></div><div class="meta"><span>Cible ≥ 30%</span><span style="color:var(--acc-soft)">Conforme</span></div></div>
+        <div class="tile"><div class="row"><span class="lbl">Quota jeunes</span><span class="ico">✧</span></div><div class="val">67%</div><div class="track"><b style="width:67%"></b></div><div class="meta"><span>&lt; 35 ans</span><span style="color:var(--acc-soft)">Atteint</span></div></div>
+        <div class="tile"><div class="row"><span class="lbl">Diplômés univ.</span><span class="ico">✦</span></div><div class="val">50%</div><div class="track"><b style="width:50%"></b></div><div class="meta"><span>Quota 33%</span><span>144 kpi</span></div></div>
+      </div>
+      <div class="duo">
+        <div class="card">
+          <h4><span class="l"></span>Complétude des dossiers — APC &amp; APW</h4>
+          <div class="hbar">
+            <div class="c"><div class="t"><i style="height:100%"></i></div><b>APC 100%</b></div>
+            <div class="c"><div class="t"><i style="height:72%"></i></div><b>APW 72%</b></div>
+            <div class="c"><div class="t"><i style="height:44%"></i></div><b>Phase 3</b></div>
+            <div class="c"><div class="t"><i style="height:88%"></i></div><b>Phase 4</b></div>
+            <div class="c"><div class="t"><i style="height:60%"></i></div><b>Phase 5</b></div>
+          </div>
+        </div>
+        <div class="card">
+          <h4><span class="l"></span>Vigilance ANIE</h4>
+          <div class="alerts">
+            <div class="a g"><span class="ic">✓</span><div><b>Extrait de rôle validé</b><span>Mention « Apuré » → Halim Douida</span></div></div>
+            <div class="a w"><span class="ic">!</span><div><b>B3 &gt; 3 mois</b><span>Casier à renouveler avant dépôt — 2 dossiers</span></div></div>
+            <div class="a w"><span class="ic">!</span><div><b>Service national</b><span>Situation à justifier — 1 candidat</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h4><span class="l"></span>Liste ordonnée — APC Bologhine</h4>
+        <table>
+          <tr><th>Rang</th><th>Candidat</th><th>Quartier</th><th>11 pièces</th><th>Statut</th></tr>
+          <tr><td><span class="rank one">01</span></td><td class="name"><b>HASBALAOUI Nour</b><small>34 ans · Homme</small></td><td>Notre-Dame d'Afrique</td><td><span class="dots"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i></span></td><td><span class="pill g">100% prêt</span></td></tr>
+          <tr><td><span class="rank">02</span></td><td class="name"><b>BADAOUI Lina</b><small>29 ans · Femme</small></td><td>Ibn Ziri</td><td><span class="dots"><i class="g"></i><i class="g"></i><i class="a"></i><i class="a"></i><i class="g"></i></span></td><td><span class="pill a">En cours</span></td></tr>
+          <tr><td><span class="rank">03</span></td><td class="name"><b>KEBIR Karim</b><small>41 ans · Homme</small></td><td>Saint-Eugène</td><td><span class="dots"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i></span></td><td><span class="pill g">100% prêt</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
